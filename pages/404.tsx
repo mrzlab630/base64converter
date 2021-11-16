@@ -8,14 +8,15 @@
  *
  */
 
-import {IErrorPage} from '../interfaceAndType/IErrorPage'
+import {IPageNotFound} from '../interfaceAndType/IPageNotFound'
 import {NextPage} from "next"
 import {useAppSelector} from "../redux/hooks"
 import {RootState} from "../redux/store"
 import SEOHead from "../components/SEOHead"
+import ErrorPage from "../layouts/ErrorPage"
 
 
-const ErrorPage: NextPage<IErrorPage> = () => {
+const PageNotFound: NextPage<IPageNotFound> = () => {
 
     const header = useAppSelector((state:RootState) => state.seo.header)
     const seo = header.filter(itm => itm.page === 'error').pop()
@@ -32,8 +33,12 @@ const ErrorPage: NextPage<IErrorPage> = () => {
                 image:seo?.image
             }}
         />
-        pageNotFound
+        <ErrorPage
+            code={404}
+            title={'Page not found'}
+            subText={'Looks like the page you were looking for is no longer here.'}
+        />
         </>
 }
 
-export default ErrorPage
+export default PageNotFound

@@ -8,14 +8,15 @@
  *
  */
 
-import {IErrorPage} from '../interfaceAndType/IErrorPage'
+import {IServerErrorPage} from '../interfaceAndType/IServerErrorPage'
 import {NextPage} from "next"
 import {useAppSelector} from "../redux/hooks"
 import {RootState} from "../redux/store"
 import SEOHead from "../components/SEOHead"
+import ErrorPage from "../layouts/ErrorPage";
 
 
-const ErrorPage: NextPage<IErrorPage> = () => {
+const ServerErrorPage: NextPage<IServerErrorPage> = () => {
 
     const header = useAppSelector((state:RootState) => state.seo.header)
     const seo = header.filter(itm => itm.page === 'error').pop()
@@ -32,8 +33,12 @@ const ErrorPage: NextPage<IErrorPage> = () => {
                 image:seo?.image
             }}
         />
-        error 500
+        <ErrorPage
+            code={500}
+            title={'Server error'}
+            subText={`Unfortunately we're having trouble loading the page you are looking for. Please come back in a while.`}
+        />
         </>
 }
 
-export default ErrorPage
+export default ServerErrorPage

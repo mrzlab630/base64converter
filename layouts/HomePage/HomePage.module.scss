@@ -41,10 +41,13 @@
   & .notepad{
     width: 100%;
     position: relative;
+    min-height: 10rem;
 
     @media (min-width: $page-width-tab) {
       width: 60%;
+      min-height: 30rem;
     }
+
 
     & .notepadWrap{
       position: relative;
@@ -74,7 +77,8 @@
       @include textArea;
       margin-top: .4rem;
       position: relative;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     & .clickTOcopy{
@@ -99,6 +103,22 @@
     width: 100%;
     margin: auto;
     padding-left:0;
+
+    & .menuCenter{
+
+      @media (min-width: $page-width-tab) {
+      flex-grow: 1;
+      }
+    }
+
+    & .selectFile{
+      padding: 0.25em;
+
+      @media (min-width: $page-width-tab) {
+        padding: 0;
+      }
+    }
+
   }
 
 }

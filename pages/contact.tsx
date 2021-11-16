@@ -12,12 +12,15 @@ import {NextPage} from "next"
 import {useAppSelector} from "../redux/hooks"
 import {RootState} from "../redux/store"
 import SEOHead from "../components/SEOHead"
+import ContactPage from "../layouts/ContactPage"
 
 
-const ContactPage: NextPage<IContactPage> = () => {
+const Contact: NextPage<IContactPage> = () => {
 
     const header = useAppSelector((state:RootState) => state.seo.header)
     const seo = header.filter(itm => itm.page === 'contact').pop()
+
+
 
 
 
@@ -31,11 +34,8 @@ const ContactPage: NextPage<IContactPage> = () => {
                     image:seo?.image
                 }}
             />
-        <div>
-            ContactPage
-        </div>
-
+            <ContactPage/>
         </>
 }
 
-export default ContactPage
+export default Contact

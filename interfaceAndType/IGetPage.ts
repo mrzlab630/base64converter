@@ -12,5 +12,6 @@
 export interface IGetPage {
     content?:string,
     title?:string,
-    description?:string
+    description?:string,
+    redirect?:boolean
 }

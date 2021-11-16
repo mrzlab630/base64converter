@@ -22,7 +22,10 @@ import {
     decryptBase64WIN,
     isBase64
 } from './cryptoBase64'
-
+import {
+    encrypt,
+    decrypt
+} from './crypto'
 
 
 
@@ -36,5 +39,8 @@ export {
     decryptBase64,
     cryptoBase64WIN,
     decryptBase64WIN,
-    isBase64
+    isBase64,
+    encrypt,
+    decrypt
+
 }

@@ -16,7 +16,8 @@ import {Provider} from "react-redux"
 import {store} from "../redux/store"
 import ProgressBar from "../components/ProgressBar/ProgressBar"
 import {gtagPageview, fbPixelPageview} from '../lib'
-
+import { ApolloProvider } from "@apollo/client"
+import {clientApollo} from '../apollo'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -64,10 +65,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 
     return <Provider store={store}>
+        <ApolloProvider client={clientApollo}>
                 {
                     loading ? <ProgressBar/>
                         : <Component {...pageProps} />
                 }
+        </ApolloProvider>
             </Provider>
 
 }

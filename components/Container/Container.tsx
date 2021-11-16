@@ -11,6 +11,7 @@ import {FC, useState} from "react"
 import {IContainer} from './interface'
 import classes from './Container.module.scss'
 import FileSvg from '../../assets/svg/file.svg'
+import CodeSvg from '../../assets/svg/code.svg'
 import Button from "../Button"
 import Router from "next/router"
 import Link from 'next/link'
@@ -84,7 +85,7 @@ const Container: FC<IContainer> = ({
                                                             variant={'outlined'}
                                                             callback={handleClickNewNote}
                                                         >
-                                                            <FileSvg className={`logo ${classes.logo}`} />
+                                                            <CodeSvg className={`logo ${classes.logo}`} />
                                                             <span className={classes.btnNewNoteTxt}>new decode</span>
                                                         </Button>
                             }

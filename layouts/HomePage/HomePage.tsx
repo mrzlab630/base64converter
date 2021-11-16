@@ -27,7 +27,6 @@ import Switch from "../../components/Switch";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import {IInputCallbackParams} from "../../components/Input/interface";
-import {type} from "os";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 
 
@@ -125,6 +124,7 @@ const HomePage: NextPage<IHomePage> = ({
         reader.onload = () => {
             baseURL = String(reader.result)
             setDefaultValue(baseURL)
+            setIsLoading(false)
         }
 
     }
@@ -135,23 +135,19 @@ const HomePage: NextPage<IHomePage> = ({
         if(typeof v !== "object"){
             return
         }
-
+        setIsLoading(true)
         const file:File = v[0]
-
-        console.log(file?.size)
 
         if(file?.size > 2193613){
             setShowAlert(true)
-            setAlertMessage( `file size exceeded`)
+            setAlertMessage( `Error: max 2mb`)
             setAlertType( 'error')
-
+            setIsLoading(false)
             return;
         }
 
-        setIsLoading(true)
-        getBase64(file)
-        setIsLoading(false)
 
+        getBase64(file)
     }
 
 
@@ -221,25 +217,27 @@ const HomePage: NextPage<IHomePage> = ({
                                                              />
 
                                                              <div className={classes.menu}>
-                                                                 <Switch
-                                                                     lableOn={'encode'}
-                                                                     lableOff={'decode'}
-                                                                     toggle={enOrDeCode}
-                                                                     callback={handleSwitch}
-                                                                 />
-
-                                                                 <Input
-                                                                     type={'file'}
-                                                                     onChange={handleGetFile}
-                                                                 />
-
-
                                                                  <Button
                                                                      name={'auto'}
                                                                      variant={autoDetect ? 'contained' : 'outlined'}
                                                                      callback={handlesetAutoDetect}
                                                                  />
 
+                                                                 <div  className={classes.menuCenter}>
+                                                                     <Switch
+                                                                         lableOn={'encode'}
+                                                                         lableOff={'decode'}
+                                                                         toggle={enOrDeCode}
+                                                                         callback={handleSwitch}
+                                                                     />
+
+                                                                 </div>
+
+                                                                 <Input
+                                                                     classWrap={classes.selectFile}
+                                                                     type={'file'}
+                                                                     onChange={handleGetFile}
+                                                                 />
                                                              </div>
 
 

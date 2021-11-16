@@ -34,10 +34,24 @@
     color: $cr-gray-light-two;
   }
   & .logo{
-    width: 1rem;
+    width: 1.3rem;
     height: auto;
     vertical-align: sub;
-    fill:$cr-white;
+    & g{
+
+      & path:first-child{
+        fill:$cr-azure;
+      }
+      & path{
+        fill:$cr-gray-light;
+      }
+      &:hover{
+        & path:first-child{
+          fill:$cr-gray-light;
+        }
+      }
+
+    }
 
   }
 

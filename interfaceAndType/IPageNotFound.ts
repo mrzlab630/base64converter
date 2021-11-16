@@ -8,6 +8,6 @@
  *
  */
 
-export interface IErrorPage{
+export interface IPageNotFound {
 
 }

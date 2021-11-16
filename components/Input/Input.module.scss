@@ -80,6 +80,44 @@
     text-transform: capitalize;
   }
 
+  &[type='file']{
+    visibility: hidden;
+  }
+  &[type=file]::file-selector-button {
+    padding-left: 1.3rem;
+
+  }
+  &[type='file']{
+    position: relative;
+    padding: 0.4rem 0.6rem;
+    width: 5rem;
+
+    &:hover::before{
+      background-color: $cr-azure;
+    }
+    &:active::before {
+      background:$cr-blue;
+    }
+
+    &::before {
+      visibility: visible;
+      content: "Select file";
+      background-color: $cr-dark-azure;
+      padding: 0.48rem .9rem;
+      text-transform: capitalize;
+      border-radius: 0.25em;
+      text-align: center;
+      cursor: pointer;
+      font-size: .9rem;
+      display: flex;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
   &[type='number'] {
     -moz-appearance:textfield;
   }
